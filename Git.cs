@@ -13,7 +13,7 @@ namespace GitRelease {
 		public string? Zip { get; private set; }
 		public async Task<GitArtifacts> GetArtifacts() {
 			try {
-				using var req = new HttpRequestMessage(HttpMethod.Get, $"https://api.github.com/repos/{Repository}/{Project}/actions/artifacts");
+				using var req = new HttpRequestMessage(HttpMethod.Get, $"https://api.github.com/repos/{Repository}/{Project}/actions/artifacts?per_page=20");
 				using var res = await HClient.SendAsync(req);
 				var ret = await res.Content.ReadFromJsonAsync<GitArtifacts>(new JsonSerializerOptions() { PropertyNameCaseInsensitive = true }) ?? new();
 				ret.StatusCode = (int)res.StatusCode;

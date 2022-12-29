@@ -69,6 +69,7 @@ else {
 				foreach (var i in art.Artifacts) {
 					inc++;
 					Console.WriteLine($"\t{inc}: {i.Title}");
+					if (inc >= 9) break;
 				}
 				Console.WriteLine("\n");
 				while (select > inc || select < 1) {
