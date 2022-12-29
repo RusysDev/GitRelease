@@ -25,6 +25,7 @@ namespace GitRelease {
 		public string? Path { get; set; }
 		public GitLast? Last { get; set; }
 		public GitVersion? Versions { get; set; }
+		public string? Artifacts { get; set; }
 		public string? Branch { get; set; }
 		public string? PreRelease { get; set; }
 		public string? PostRelease { get; set; }
