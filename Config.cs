@@ -17,6 +17,7 @@ namespace GitRelease {
 		[XmlAttribute] public int Keep { get; set; }
 		[XmlAttribute] public string? Pref { get; set; }
 		[XmlAttribute] public string? Exec { get; set; }
+		[XmlAttribute] public string? Args { get; set; }
 	}
 	public class Profile {
 		[XmlAttribute] public string? Name { get; set; }
