@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Rename this file to config.xml or use name in command arguments -->
+<Publishing>
+	<!-- Global github token -->
+	<Token>github_token</Token>
+	<!-- Release attribute will automatically select and release latest artifact -->
+	<Profile Name="Profile1" Release="true">
+		<Git Repo="RepositoryName" Project="ProjectName" Token="github_token" />
+		<Path>/path/to/application/folder</Path>
+		<!-- Latest release information (autoupdate)-->
+		<Last Name="SQLLite_17" Date="2022-12-28T14:03:41Z" />
+		<!-- execution before and after artifact unzip [/bin/bash] -->
+		<PreRelease></PreRelease>
+		<PostRelease></PostRelease>
+		<!-- Keep other versions (Create subfolders for releases)-->
+		<Versions Keep="5" RemPref="rel_" Exec="Program.exe"></Versions>
+	</Profile>
+	
+	<Profile Name="Profile2">
+		<Git Repo="OtherRepo" Project="ProjectName" />
+	</Profile>
+</Publishing>
