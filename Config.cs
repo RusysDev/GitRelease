@@ -47,6 +47,7 @@ namespace GitRelease {
 					var pth = Helper.Path;
 					if (File.Exists($"{file}.xml")) file = $"{file}.xml";
 					else if (File.Exists(Path.Combine(pth, $"{file}.xml"))) file = Path.Combine(pth, $"{file}.xml");
+					else if (File.Exists("config.xml")) { name = file; file = "config.xml"; }
 					else if (File.Exists(Path.Combine(pth, "config.xml"))) { name = file; file = Path.Combine(pth, "config.xml"); }
 				}
 
