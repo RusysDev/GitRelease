@@ -107,7 +107,7 @@ else {
 
 					if (!string.IsNullOrEmpty(slx.Versions.Exec)) {
 						using var fs = File.Create(Path.Combine(slx.Path, "run"));
-						var dt = new System.Text.UTF8Encoding(true).GetBytes($"#!/bin/bash\ncd \"{slx.Path}\"\n{Path.Combine(itm.Name ?? "", slx.Versions.Exec.Replace("\"", "\\\""))}\n");
+						var dt = new System.Text.UTF8Encoding(true).GetBytes($"#!/bin/bash\ncd \"{slx.Path}\"\n{Path.Combine(itm.Name ?? "", slx.Versions.Exec.Replace("\"", "\\\"") + " $*")}\n");
 						fs.Write(dt);
 
 					}
