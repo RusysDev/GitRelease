@@ -79,7 +79,7 @@ else {
 			}
 
 			Console.WriteLine($"\nArtifact: {itm.Title}\nDownloading: {itm.Download}");
-			await git.Download(itm);
+			await git.Download(itm, cfg.Artifacts);
 
 			while (!Directory.Exists(slx.Path)) {
 				if (!string.IsNullOrEmpty(slx.Path)) { Console.WriteLine("Destination path does not exist."); }

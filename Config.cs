@@ -25,18 +25,19 @@ namespace GitRelease {
 		public string? Path { get; set; }
 		public GitLast? Last { get; set; }
 		public GitVersion? Versions { get; set; }
-		public string? Artifacts { get; set; }
 		public string? Branch { get; set; }
 		public string? PreRelease { get; set; }
 		public string? PostRelease { get; set; }
 	}
 	public class Publishing {
 		public string? Token { get; set; }
+		public string? Artifacts { get; set; }
 		[XmlElement("Profile")] public List<Profile> Profiles { get; set; } = new();
 	}
 
 	public class Config {
 		public string? Token { get; set; }
+		public string? Artifacts { get; set; }
 		public List<Profile>? Profiles { get; set; }
 		public Profile? Selected { get; set; }
 		public CfgError? Error { get; set; }
@@ -58,8 +59,7 @@ namespace GitRelease {
 				var mtd = (Publishing?)new XmlSerializer(typeof(Publishing)).Deserialize(rdr);
 
 				if (mtd is not null) {
-					Profiles = mtd.Profiles;
-					Token = mtd.Token;
+					Profiles = mtd.Profiles; Token = mtd.Token; Artifacts = mtd.Artifacts;
 
 					if (!string.IsNullOrEmpty(name)) {
 						foreach (var i in Profiles) if (i.Name == name) { Selected = i; break; }
@@ -81,7 +81,7 @@ namespace GitRelease {
 				Indent = true, IndentChars = "\t"
 			});
 
-			serializer.Serialize(streamWriter, new Publishing() { Profiles = Profiles ?? new(), Token = Token });
+			serializer.Serialize(streamWriter, new Publishing() { Profiles = Profiles ?? new(), Token = Token, Artifacts = Artifacts });
 		}
 	}
 

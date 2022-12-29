@@ -24,8 +24,8 @@ namespace GitRelease {
 				return await Task.FromResult(new GitArtifacts() { Error = true, StatusCode = -1, Message = ex.Message });
 			}
 		}
-		public async Task Download(Artifact art) {
-			var pth = Path.Combine(Helper.Path, "Artifacts");
+		public async Task Download(Artifact art, string? path=null) {
+			var pth = string.IsNullOrEmpty(path) ? Path.Combine(Helper.Path, "Artifacts") : path;
 			if (!Directory.Exists(pth)) Directory.CreateDirectory(pth);
 
 			using var s = await HClient.GetStreamAsync(art.Download);

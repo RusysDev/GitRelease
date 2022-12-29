@@ -3,14 +3,14 @@
 <Publishing>
 	<!-- Global github token -->
 	<Token>github_token</Token>
+	<!-- Artifact download location -->
+	<Artifacts>/path/to/artifacts</Artifacts>
 	<!-- Release attribute will automatically select and release latest artifact -->
 	<Profile Name="Profile1" Release="true">
 		<Git Repo="RepositoryName" Project="ProjectName" Token="github_token" />
 		<Path>/path/to/application/folder</Path>
 		<!-- Latest release information (autoupdate)-->
 		<Last Name="SQLLite_17" Date="2022-12-28T14:03:41Z" />
-		<!-- Artefact download location -->
-		<Artifacts>/path/to/artifacts</Artifacts>
 		<!-- execution before and after artifact unzip [/bin/bash] -->
 		<PreRelease></PreRelease>
 		<PostRelease></PostRelease>
