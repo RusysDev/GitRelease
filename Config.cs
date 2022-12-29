@@ -50,7 +50,7 @@ namespace GitRelease {
 					else if (File.Exists(Path.Combine(pth, "config.xml"))) { name = file; file = Path.Combine(pth, "config.xml"); }
 				}
 
-				if (!File.Exists(file)) { Error = new("Config File", "Unable to locate configuration file"); return; }
+				if (!File.Exists(file)) { Error = new("Config File", $"Unable to locate configuration file {file}"); return; }
 
 				using var rdr = new StreamReader(CfgFile = new FileInfo(file).FullName);
 				var mtd = (Publishing?)new XmlSerializer(typeof(Publishing)).Deserialize(rdr);

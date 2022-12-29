@@ -88,7 +88,7 @@ else {
 			}
 			slx.Path = new DirectoryInfo(slx.Path).FullName;
 
-			if (!string.IsNullOrEmpty(slx.PreRelease) && slx.PreRelease.Bash() is null) return;
+			if (!string.IsNullOrEmpty(slx.PreRelease) && slx.PreRelease.Replace("${path}", slx.Path).Bash() is null) return;
 
 			if (string.IsNullOrEmpty(git.Zip)) Console.WriteLine("Error: Artifact file not found.");
 			else {
@@ -114,7 +114,7 @@ else {
 				}
 
 
-				if (!string.IsNullOrEmpty(slx.PostRelease) && slx.PostRelease.Bash() is null) return;
+				if (!string.IsNullOrEmpty(slx.PostRelease) && slx.PostRelease.Replace("${path}", slx.Path).Bash() is null) return;
 
 				if (slx.Release) {
 					Console.WriteLine($"Saving configuration: {Path.GetFileName(cfg.CfgFile)}");
