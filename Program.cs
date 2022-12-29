@@ -17,7 +17,7 @@ else {
 		Console.WriteLine("Configuration profiles:");
 		foreach (var i in cfg.Profiles) {
 			inc++;
-			Console.WriteLine($"\t{inc}: {i.Name} [{i.Git?.Repo}\\{i.Git?.Project}]");
+			Console.WriteLine($"\t{inc}: {i.Name} [{i.Git?.Repo}\\{i.Git?.Project}{(string.IsNullOrEmpty(i.Branch)?"":$" - {i.Branch}")}]");
 		}
 		Console.WriteLine("");
 		while (slx is null) {
